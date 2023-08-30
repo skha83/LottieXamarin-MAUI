@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Maui"
              x:Class="Lottie.Sample.MainPage">
 
     <ScrollView>
@@ -9,11 +10,28 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <lottie:AnimationView x:Name="A1"
+                                  Animation="animation_llq1y8ia.json"
+                                  AnimationSource="AssetOrBundle"
+                                  HeightRequest="200"
+                                  WidthRequest="200"
+                                  AutoPlay="True"
+                                  RepeatMode="Restart"
+                                  RepeatCount="100"
+                                  BackgroundColor="Black"
+                                  HorizontalOptions="Center" />
+
+            <Button Text="Test" Clicked="OnCounterClicked"/>
+
+            <lottie:AnimationView Animation="anim.json"
+                                  AnimationSource="AssetOrBundle"
+                                  HeightRequest="50"
+                                  WidthRequest="50"
+                                  AutoPlay="True"
+                                  RepeatMode="Restart"
+                                  RepeatCount="100"
+                                  BackgroundColor="Green"
+                                  HorizontalOptions="Center" />
 
             <Label
                 Text="Hello, World!"
