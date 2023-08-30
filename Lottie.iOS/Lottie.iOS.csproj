@@ -25,14 +25,14 @@
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
     <ObjcBindingApiDefinition Include="ApiDefinitions.Ios.cs" />
-    <ObjcBindingNativeLibrary Include="libLottie-ios.a" />
+    <!--<ObjcBindingNativeLibrary Include="libLottie-ios.a" />-->
     <Compile Include="libLottie-ios.linkwith.cs">
       <DependentUpon>libLottie-ios.a</DependentUpon>
     </Compile>
-    <!--<NativeReference Include="libLottie-ios.a">
+    <NativeReference Include="libLottie-ios.a">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
-    </NativeReference>-->
+    </NativeReference>
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
