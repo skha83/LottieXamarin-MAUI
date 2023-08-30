@@ -23,7 +23,7 @@ namespace Lottie.Sample
                     handlers.AddCompatibilityRenderer(typeof(Lottie.Forms.AnimationView), typeof(Lottie.Forms.Platforms.Android.AnimationViewRenderer));
 #endif
 #if IOS
-                    handlers.AddCompatibilityRenderer(typeof(AnimationView), typeof(Lottie.Forms.Platforms.Ios.AnimationViewRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(Lottie.Forms.AnimationView), typeof(Lottie.Forms.Platforms.Ios.AnimationViewRenderer));
 #endif
                 });
 

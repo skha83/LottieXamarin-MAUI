@@ -13,7 +13,8 @@
 		<ApplicationTitle>Lottie.Sample</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.lottie.sample</ApplicationId>
+    <ApplicationId Condition="$(TargetFramework.Contains('-ios'))">cz.solitea.iDoklad</ApplicationId>
+    <ApplicationId Condition="$(TargetFramework.Contains('-android'))">cz.csw.iDoklad</ApplicationId>
 		<ApplicationIdGuid>dc069acb-4a47-403e-83d7-3e14d4d89d8c</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -21,9 +22,11 @@
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-	</PropertyGroup>
+
+    <ProvisioningType>manual</ProvisioningType>
+    <CodesignKey>Apple Development: Vyvoj Mobil (7MZM36JFWZ)</CodesignKey>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
