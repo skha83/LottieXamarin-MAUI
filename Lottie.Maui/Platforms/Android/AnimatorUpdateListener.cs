@@ -1,7 +1,7 @@
 ﻿using Android.Animation;
 using Android.Runtime;
 
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
     public class AnimatorUpdateListener : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
     {
@@ -17,8 +17,7 @@ namespace Lottie.Forms.Platforms.Android
 
         public void OnAnimationUpdate(ValueAnimator animation)
         {
-            if (animation == null)
-                throw new ArgumentNullException(nameof(animation));
+            ArgumentNullException.ThrowIfNull(animation);
 
             OnAnimationUpdateImpl?.Invoke(((float)animation.AnimatedValue));
         }

@@ -2,14 +2,13 @@
 using Airbnb.Lottie;
 using Foundation;
 
-namespace Lottie.Forms.Platforms.Ios
+namespace Lottie.Maui.Platforms.Ios
 {
     public static class AnimationViewExtensions
     {
         public static LOTComposition GetAnimation(this AnimationView animationView)
         {
-            if (animationView == null)
-                throw new ArgumentNullException(nameof(animationView));
+            ArgumentNullException.ThrowIfNull(animationView);
 
             var animation = animationView.Animation;
 
@@ -58,8 +57,7 @@ namespace Lottie.Forms.Platforms.Ios
 
         public static LOTComposition GetAnimation(this AnimationView animationView, object animation)
         {
-            if (animationView == null)
-                throw new ArgumentNullException(nameof(animationView));
+            ArgumentNullException.ThrowIfNull(animationView);
 
             LOTComposition composition = null;
             switch (animation)

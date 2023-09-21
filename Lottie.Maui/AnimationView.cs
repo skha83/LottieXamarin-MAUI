@@ -1,8 +1,7 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows.Input;
 
-namespace Lottie.Forms
+namespace Lottie.Maui
 {
     public class AnimationView : View
     {
@@ -12,8 +11,8 @@ namespace Lottie.Forms
         public static readonly BindableProperty AnimationProperty = BindableProperty.Create(nameof(Animation),
             typeof(object), typeof(AnimationView), default(object));
 
-        public static readonly BindableProperty AnimationSourceProperty = BindableProperty.Create(nameof(Lottie.Forms.AnimationSource),
-            typeof(AnimationSource), typeof(AnimationView), Forms.AnimationSource.AssetOrBundle);
+        public static readonly BindableProperty AnimationSourceProperty = BindableProperty.Create(nameof(Maui.AnimationSource),
+            typeof(AnimationSource), typeof(AnimationView), AnimationSource.AssetOrBundle);
 
         public static readonly BindableProperty CacheCompositionProperty = BindableProperty.Create(nameof(CacheComposition),
             typeof(bool), typeof(AnimationView), true);
@@ -40,7 +39,7 @@ namespace Lottie.Forms
             typeof(float), typeof(AnimationView), 1.0f);
 
         public static readonly BindableProperty RepeatModeProperty = BindableProperty.Create(nameof(RepeatMode),
-            typeof(RepeatMode), typeof(AnimationView), Lottie.Forms.RepeatMode.Restart);
+            typeof(RepeatMode), typeof(AnimationView), Maui.RepeatMode.Restart);
 
         public static readonly BindableProperty RepeatCountProperty = BindableProperty.Create(nameof(RepeatCount),
             typeof(int), typeof(AnimationView), 0);

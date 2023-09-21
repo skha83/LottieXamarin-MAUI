@@ -1,7 +1,7 @@
 ﻿using Android.Runtime;
 using static Android.Views.View;
 
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
     public class ClickListener : Java.Lang.Object, IOnClickListener
     {

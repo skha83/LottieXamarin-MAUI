@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using Airbnb.Lottie;
 using Foundation;
-using Lottie.Forms;
-using Lottie.Forms.Platforms.Ios;
+using Lottie.Maui;
+using Lottie.Maui.Platforms.Ios;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Controls.Platform;
@@ -10,7 +10,7 @@ using UIKit;
 
 [assembly: ExportRenderer(typeof(AnimationView), typeof(AnimationViewRenderer))]
 
-namespace Lottie.Forms.Platforms.Ios
+namespace Lottie.Maui.Platforms.Ios
 {
     public class AnimationViewRenderer : ViewRenderer<AnimationView, LOTAnimationView>
     {
@@ -114,6 +114,7 @@ namespace Lottie.Forms.Platforms.Ios
                     //_animationView.Frame = e.NewElement.Frame;
                     _animationView.AnimationProgress = e.NewElement.Progress;
 
+                    _gestureRecognizer?.Dispose();
                     _gestureRecognizer = new UITapGestureRecognizer(e.NewElement.InvokeClick);
                     _animationView.AddGestureRecognizer(_gestureRecognizer);
 

@@ -1,7 +1,7 @@
 ﻿using Android.Animation;
 using Android.Runtime;
 
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
     public class AnimatorListener : AnimatorListenerAdapter
     {

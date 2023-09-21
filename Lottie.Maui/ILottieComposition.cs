@@ -1,4 +1,4 @@
-﻿namespace Lottie.Forms
+﻿namespace Lottie.Maui
 {
     public interface ILottieComposition : IDisposable
     {

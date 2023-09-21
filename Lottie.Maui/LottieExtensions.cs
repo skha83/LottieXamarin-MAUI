@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Lottie.Forms
+namespace Lottie.Maui
 {
     public static class LottieExtensions
     {

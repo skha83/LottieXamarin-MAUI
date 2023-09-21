@@ -1,17 +1,14 @@
-﻿using System.IO;
-using Com.Airbnb.Lottie;
+﻿using Com.Airbnb.Lottie;
 
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
     public static class AnimationViewExtensions
     {
         public static void TrySetAnimation(this LottieAnimationView lottieAnimationView, AnimationView animationView)
         {
-            if (lottieAnimationView == null)
-                throw new ArgumentNullException(nameof(lottieAnimationView));
+            ArgumentNullException.ThrowIfNull(lottieAnimationView);
 
-            if (animationView == null)
-                throw new ArgumentNullException(nameof(animationView));
+            ArgumentNullException.ThrowIfNull(animationView);
 
             switch (animationView.AnimationSource)
             {
@@ -39,11 +36,9 @@ namespace Lottie.Forms.Platforms.Android
 
         public static void TrySetAnimation(this LottieAnimationView lottieAnimationView, AnimationView animationView, object animation)
         {
-            if (lottieAnimationView == null)
-                throw new ArgumentNullException(nameof(lottieAnimationView));
+            ArgumentNullException.ThrowIfNull(lottieAnimationView);
 
-            if (animationView == null)
-                throw new ArgumentNullException(nameof(animationView));
+            ArgumentNullException.ThrowIfNull(animationView);
 
             switch (animation)
             {
@@ -72,8 +67,7 @@ namespace Lottie.Forms.Platforms.Android
 
         public static void ConfigureRepeat(this LottieAnimationView lottieAnimationView, RepeatMode repeatMode, int repeatCount)
         {
-            if (lottieAnimationView == null)
-                throw new ArgumentNullException(nameof(lottieAnimationView));
+            ArgumentNullException.ThrowIfNull(lottieAnimationView);
 
             lottieAnimationView.RepeatCount = repeatCount;
 

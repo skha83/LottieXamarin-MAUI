@@ -1,7 +1,7 @@
 ﻿using Android.Runtime;
 using Com.Airbnb.Lottie;
 
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
     public class LottieOnCompositionLoadedListener : Java.Lang.Object, ILottieOnCompositionLoadedListener
     {

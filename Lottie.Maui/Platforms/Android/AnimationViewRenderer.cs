@@ -2,14 +2,14 @@
 using Android.Content;
 using Android.Runtime;
 using Com.Airbnb.Lottie;
-using Lottie.Forms;
-using Lottie.Forms.Platforms.Android;
+using Lottie.Maui;
+using Lottie.Maui.Platforms.Android;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Platform;
 
 [assembly: ExportRenderer(typeof(AnimationView), typeof(AnimationViewRenderer))]
-namespace Lottie.Forms.Platforms.Android
+namespace Lottie.Maui.Platforms.Android
 {
 #pragma warning disable 0618
     public class AnimationViewRenderer : ViewRenderer<AnimationView, LottieAnimationView>
@@ -20,6 +20,7 @@ namespace Lottie.Forms.Platforms.Android
         private LottieOnCompositionLoadedListener _lottieOnCompositionLoadedListener;
         private LottieFailureListener _lottieFailureListener;
         private ClickListener _clickListener;
+        private bool _disposed;
 
         public AnimationViewRenderer(Context context) : base(context)
         {
@@ -45,7 +46,9 @@ namespace Lottie.Forms.Platforms.Android
             {
                 if (Control == null)
                 {
+                    _animationView?.Dispose();
                     _animationView = new LottieAnimationView(Context);
+                    _animatorListener?.Dispose();
                     _animatorListener = new AnimatorListener
                     {
                         OnAnimationCancelImpl = () => e.NewElement.InvokeStopAnimation(),
@@ -55,18 +58,22 @@ namespace Lottie.Forms.Platforms.Android
                         OnAnimationResumeImpl = () => e.NewElement.InvokeResumeAnimation(),
                         OnAnimationStartImpl = () => e.NewElement.InvokePlayAnimation()
                     };
+                    _animatorUpdateListener?.Dispose();
                     _animatorUpdateListener = new AnimatorUpdateListener
                     {
                         OnAnimationUpdateImpl = (progress) => e.NewElement.InvokeAnimationUpdate(progress)
                     };
+                    _lottieOnCompositionLoadedListener?.Dispose();
                     _lottieOnCompositionLoadedListener = new LottieOnCompositionLoadedListener
                     {
                         OnCompositionLoadedImpl = (composition) => e.NewElement.InvokeAnimationLoaded(composition)
                     };
+                    _lottieFailureListener?.Dispose();
                     _lottieFailureListener = new LottieFailureListener
                     {
                         OnResultImpl = (exception) => e.NewElement.InvokeFailure(exception)
                     };
+                    _clickListener?.Dispose();
                     _clickListener = new ClickListener
                     {
                         OnClickImpl = () => e.NewElement.InvokeClick()
@@ -207,6 +214,35 @@ namespace Lottie.Forms.Platforms.Android
                 _animationView.Progress = Element.Progress;
 
             base.OnElementPropertyChanged(sender, e);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _disposed = true;
+            if (disposing)
+            {
+                _animationView?.Dispose();
+                _animatorListener?.Dispose();
+                _animatorUpdateListener?.Dispose();
+                _lottieOnCompositionLoadedListener?.Dispose();
+                _lottieFailureListener?.Dispose();
+                _clickListener?.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        protected virtual void ThrowIfDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(GetType().FullName);
+            }
         }
     }
 #pragma warning restore 0618

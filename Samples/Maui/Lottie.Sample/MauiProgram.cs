@@ -20,10 +20,10 @@ namespace Lottie.Sample
                 .ConfigureMauiHandlers(handlers =>
                 {
 #if ANDROID
-                    handlers.AddCompatibilityRenderer(typeof(Lottie.Forms.AnimationView), typeof(Lottie.Forms.Platforms.Android.AnimationViewRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(Maui.AnimationView), typeof(Maui.Platforms.Android.AnimationViewRenderer));
 #endif
 #if IOS
-                    handlers.AddCompatibilityRenderer(typeof(Lottie.Forms.AnimationView), typeof(Lottie.Forms.Platforms.Ios.AnimationViewRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(Maui.AnimationView), typeof(Maui.Platforms.Ios.AnimationViewRenderer));
 #endif
                 });
 

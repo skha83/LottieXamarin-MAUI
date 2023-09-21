@@ -1,14 +1,13 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace Lottie.Forms
+namespace Lottie.Maui
 {
     public static class AnimationViewExtensions
     {
         public static Stream GetStreamFromAssembly(this AnimationView animationView)
         {
-            if (animationView == null)
-                throw new ArgumentNullException(nameof(animationView));
+            ArgumentNullException.ThrowIfNull(animationView);
 
             if (animationView.Animation is string embeddedAnimation)
             {
