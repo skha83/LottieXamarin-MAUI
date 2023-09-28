@@ -1,15 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <!--<TargetFrameworks>net8.0-ios;net8.0-maccatalyst</TargetFrameworks>-->
     <TargetFrameworks>net8.0-ios</TargetFrameworks>
     <AssemblyName>Lottie.iOS</AssemblyName>
     <RootNamespace>Lottie.iOS</RootNamespace>
     <Description>Render After Effects animations natively on Android, iOS, MacOS, TVOs and UWP</Description>
     <PackageId>Uneeg.Com.Airbnb.iOS.Lottie</PackageId>
-    <EnableDefaultItems>false</EnableDefaultItems>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsBindingProject>true</IsBindingProject>
     <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoBindingEmbedding>false</NoBindingEmbedding>
   </PropertyGroup>
   
   <ItemGroup>
@@ -17,20 +19,18 @@
     <None Include="readme.txt" pack="true" PackagePath="." />
   </ItemGroup>
 
-  <ItemGroup>
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-    <Compile Include="Linker.cs" />
-    <Compile Include="LOTAnimationView.cs" />
-  </ItemGroup>
-
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinitions.Ios.cs" />
-    <Compile Include="libLottie-ios.linkwith.cs">
-      <DependentUpon>libLottie-ios.a</DependentUpon>
-    </Compile>
     <NativeReference Include="libLottie-ios.a">
       <Kind>Static</Kind>
+      <Frameworks>UIKit</Frameworks>
+      <LinkerFlags>-ObjC</LinkerFlags>
+      <WeakFrameworks></WeakFrameworks>
       <ForceLoad>True</ForceLoad>
+      <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>
+      <IsCxx>True</IsCxx>
+      <SmartLink>True</SmartLink>
     </NativeReference>
   </ItemGroup>
 

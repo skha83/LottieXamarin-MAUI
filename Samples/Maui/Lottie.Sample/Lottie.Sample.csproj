@@ -26,7 +26,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
     <ProvisioningType>manual</ProvisioningType>
-    <CodesignKey>Apple Development: Vyvoj Mobil (7MZM36JFWZ)</CodesignKey>
+    <!--<CodesignKey>Apple Development: Vyvoj Mobil (7MZM36JFWZ)</CodesignKey>-->
   </PropertyGroup>
 
 	<ItemGroup>
@@ -58,7 +58,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Lottie.Maui\Lottie.Maui.csproj" />
-    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.7.8842" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-rc.1.9171" />
 	</ItemGroup>
 
 </Project>
